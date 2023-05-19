@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Captcha
+        </title>
+    </head>
+    <body>
+        
+        <style>
+            .gimmehead
+            {
+                font-family: Arial;
+                font-size: 17px;
+                font-weight: bold;
+                color: rgb(72, 70, 70);
+                margin-bottom: 25px;
+                margin-left: 10px;
+            }
+            .nohead
+            {
+                font-family: Arial;
+                font-size: 13.5px;
+                font-weight: bold;
+                color:rgb(91, 88, 88);
+                margin-bottom: 2px;
+                margin-left: 10px;
+            }
+            .nohead2
+            {
+                font-family: Arial;
+                font-size: 12.5px;
+                font-weight: bold;
+                color:rgb(57, 56, 56);
+                margin-top: 2px;
+                margin-bottom: 0px;
+                margin-left: 10px;
+            }
+            .nohead3
+            {
+                font-family: Arial;
+                font-size: 13.5px;
+                font-weight: bold;
+                color:rgb(91, 88, 88);
+                margin-left: 10px;
+                margin-top: 20px;
+                margin-bottom: 0px;
+            }
+            .photu
+            {
+                border-color: white;
+                margin-left: 10px;
+            }
+            .button
+            {
+                margin-left: 10px;
+            }
+            .inp
+            {
+                margin-left: 10px;
+            }
+            .sub
+            {
+                background-color: rgb(71, 71, 229);
+                color: white;
+                font-family: Arial;
+                border-radius: 2px;
+                border-color: rgb(71, 71, 229);
+            }
+        </style>
+
+        <p class = "gimmehead">
+            Security Check
+        </p>
+
+        <p class = "nohead">
+            Please enter the text below
+        </p>
+
+        
+        
+        <img class = "photu" id = 'Wsham'src = "captcha/1.png">
+        </br>
+        <p class = "nohead2">
+            Can't read the above text?
+        </p>
+
+        
+
+        <a href = "#" class = "button" onclick="displayRandomCaptcha()">
+            Generate Captcha 
+        </a>
+
+        <p class = "nohead3">
+            Text in the box:
+        </p>
+
+        <input class = "inp" type = "text" placeholder="Enter">
+        
+        <button class = "sub">
+            Sumbit
+        </button>
+
+        <script>
+                
+            let captcha_gallery = 
+            [
+                {
+                    src:"captcha/1.png",
+                    value : 1
+                },
+                {
+                    src : "captcha/2.png",
+                    value : 2
+                },
+                {
+                    src:"captcha/3.png",
+                    value : 3
+                },
+                {
+                    src : "captcha/4.png",
+                    value : 4
+                },
+                {
+                    src:"captcha/5.png",
+                    value : 5
+                },
+            ]
+
+            function get_randomCaptcha(captcha_gallery)
+            {
+                const length = captcha_gallery.length;
+                const randindex = Math.floor(length*Math.random());   //floor(random no. generated with max = length of gallery) : 0,1
+                return (captcha_gallery[randindex])
+            }
+            function displayRandomCaptcha()
+            {
+                const captcha = get_randomCaptcha(captcha_gallery);
+                const imagechild = document.getElementById("Wsham");
+                
+                imagechild.src = captcha.src;
+            };
+
+
+
+        </script>
+</body>
+</html>
+
+

@@ -46,11 +46,7 @@
                 margin-top: 20px;
                 margin-bottom: 0px;
             }
-            .photu
-            {
-                border-color: white;
-                margin-left: 10px;
-            }
+            
             .button
             {
                 margin-left: 10px;
@@ -67,7 +63,14 @@
                 border-radius: 2px;
                 border-color: rgb(71, 71, 229);
             }
-        </style>
+            div {
+                width: 200px;
+                padding: 10px;
+                border: 2px solid gray;
+                margin: 0;
+                margin-left: 10px;
+            }           
+            </style>
 
         <p class = "gimmehead">
             Security Check
@@ -77,17 +80,15 @@
             Please enter the text below
         </p>
 
+        <div id = "captcha"  >
+        </div>
         
-        
-        <img class = "photu" id = 'Wsham'src = "captcha/1.png">
         </br>
         <p class = "nohead2">
             Can't read the above text?
         </p>
 
-        
-
-        <a href = "#" class = "button" onclick="displayRandomCaptcha()">
+        <a href = "#" class = "button" onclick="get_text()">
             Generate Captcha 
         </a>
 
@@ -95,55 +96,71 @@
             Text in the box:
         </p>
 
-        <input class = "inp" type = "text" placeholder="Enter">
+        <input id = "inp" class = "inp" type = "text" placeholder="Enter">
         
-        <button class = "sub">
+        <button class = "sub" onClick = "check()">
             Submit
         </button>
-
+        </br>
+        
         <script>
                 
-            let captcha_gallery = 
-            [
-                {
-                    src:"captcha/1.png",
-                    value : 1
-                },
-                {
-                    src : "captcha/2.png",
-                    value : 2
-                },
-                {
-                    src:"captcha/3.png",
-                    value : 3
-                },
-                {
-                    src : "captcha/4.png",
-                    value : 4
-                },
-                {
-                    src:"captcha/5.png",
-                    value : 5
-                },
-            ]
-
-            function get_randomCaptcha(captcha_gallery)
+            function get_randNumber(max,min)
             {
-                const length = captcha_gallery.length;
-                const randindex = Math.floor(length*Math.random());   //floor(random no. generated with max = length of gallery) : 0,1
-                return (captcha_gallery[randindex])
+                const randno = Math.floor(Math.random()* (max-min+1)+min);   //floor(random no. generated with max = length of gallery) : 0,1
+                return randno;
             }
-            function displayRandomCaptcha()
-            {
-                const captcha = get_randomCaptcha(captcha_gallery);
-                const imagechild = document.getElementById("Wsham");
+            function get_text()
+            {   
+                text = ""
+                for(i=0;i<2;i++)
+                {
+                    text += String.fromCharCode(get_randNumber(65,90));   //capital
+                    text += String.fromCharCode(get_randNumber(97,122)); //small
+                    text += String.fromCharCode(get_randNumber(48,57)); //numbers
+                }
+                console.log(text)
+                //display
+                const captchayay = document.getElementById("captcha");
+                captchayay.textContent = text;
+                console.log(text)
+                return text;
                 
-                imagechild.src = captcha.src;
-            };
+            }
+            
+            console.log(get_text())
 
-
-
+            function check()
+            {   
+                let x = "Captcha Valid!"
+                let y = "Captcha Invalid. Please try again."
+                const fin = document.getElementById("final");
+                const inpEl = document.getElementById("inp").value;
+                
+                console.log(inpEl)
+                console.log(text)
+                
+                if (inpEl === text)
+                {
+                    fin.textContent = x
+                }
+                else
+                {
+                    fin.textContent = y
+                    get_text()
+                }
+                inpEl = ""
+                return fin.textContent
+                
+            }
+            
+            console.log(get_text());
+            console.log(check());
+            
         </script>
+        <p id = "final">
+
+        </p>
 </body>
 </html>
 

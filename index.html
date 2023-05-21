@@ -102,6 +102,9 @@
             Submit
         </button>
         </br>
+        <p id = "final">
+
+        </p>
         
         <script>
                 
@@ -119,28 +122,22 @@
                     text += String.fromCharCode(get_randNumber(97,122)); //small
                     text += String.fromCharCode(get_randNumber(48,57)); //numbers
                 }
-                console.log(text)
-                //display
                 const captchayay = document.getElementById("captcha");
                 captchayay.textContent = text;
-                console.log(text)
                 return text;
                 
             }
             
-            console.log(get_text())
 
             function check()
             {   
                 let x = "Captcha Valid!"
                 let y = "Captcha Invalid. Please try again."
                 const fin = document.getElementById("final");
-                const inpEl = document.getElementById("inp").value;
+                const inpEl = document.getElementById("inp");
+                const inputvalue = document.getElementById("inp").value;
                 
-                console.log(inpEl)
-                console.log(text)
-                
-                if (inpEl === text)
+                if (inputvalue === text)
                 {
                     fin.textContent = x
                 }
@@ -149,18 +146,13 @@
                     fin.textContent = y
                     get_text()
                 }
-                inpEl = ""
+                inpEl.value = ""
+                console.log(document.getElementById("inp").value)
                 return fin.textContent
                 
             }
-            
-            console.log(get_text());
-            console.log(check());
-            
+                        
         </script>
-        <p id = "final">
-
-        </p>
 </body>
 </html>
 

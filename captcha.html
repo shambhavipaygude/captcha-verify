@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Captcha
+        </title>
+        <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js%22%3E"></script>
+    </head>
+    <body>
+        
+        <style>
+            .gimmehead
+            {
+                font-family: Arial;
+                font-size: 17px;
+                font-weight: bold;
+                color: rgb(72, 70, 70);
+                margin-bottom: 25px;
+                margin-left: 10px;
+            }
+            .nohead
+            {
+                font-family: Arial;
+                font-size: 13.5px;
+                font-weight: bold;
+                color:rgb(91, 88, 88);
+                margin-bottom: 2px;
+                margin-left: 10px;
+            }
+            .nohead2
+            {
+                font-family: Arial;
+                font-size: 12.5px;
+                font-weight: bold;
+                color:rgb(57, 56, 56);
+                margin-top: 2px;
+                margin-bottom: 0px;
+                margin-left: 10px;
+            }
+            .nohead3
+            {
+                font-family: Arial;
+                font-size: 13.5px;
+                font-weight: bold;
+                color:rgb(91, 88, 88);
+                margin-left: 10px;
+                margin-top: 20px;
+                margin-bottom: 0px;
+            }
+            
+            .button
+            {
+                margin-left: 10px;
+            }
+            .inp
+            {
+                margin-left: 10px;
+            }
+            .sub
+            {
+                background-color: rgb(71, 71, 229);
+                color: white;
+                font-family: Arial;
+                border-radius: 2px;
+                border-color: rgb(71, 71, 229);
+            }
+            /*
+            .div-element {
+                width: 200px;
+                padding: 10px;
+                border: 2px solid gray;
+                margin: 0;
+                margin-left: 10px;
+            }  
+            */
+            .photu
+            {
+                margin-left: 70px;
+                margin-top: 30px;
+            } 
+            .container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 8%;
+            }
+            
+            </style>
+        <div class = "container">
+        <p class = "gimmehead">
+            Security Check
+        </p>
+
+        <p class = "nohead">
+            Please enter the text below
+        </p>
+
+        <div id = "captcha" class = "div-element"  >
+        </div>
+        
+        <img class = "photu" id = "photu" src = "captchaGenerator.png">
+
+        </br>
+        <p class = "nohead2">
+            Can't read the above text?
+        </p>
+
+        <script src = "photu.js"></script>
+
+        <a href = "#" class = "button" onclick="get_text()">
+            Generate Captcha 
+        </a>
+
+        <p class = "nohead3">
+            Text in the box:
+        </p>
+        <span>
+        <input id = "inp" class = "inp" type = "text" placeholder="Enter">
+        
+        <button class = "sub" onClick = "check()">
+            Submit
+        </button>
+        </span>
+        </br>
+        <p id = "final">
+
+        </p>
+        </div>
+        
+</body>
+</html>
